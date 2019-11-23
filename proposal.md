@@ -1,14 +1,10 @@
 ### Motivation and Purpose
 
-1. Tons of research have shown that more diversity in companies have led to many benefits including more innovation and quicker problem solving. Furthermore, it creates an overall fairer and more interesting society if an industry can take into account multiple perspectives and makes more thorough decisions.
+Diversity has been shown consistently by research to be conducive to increased innovation, productivity, and employee engagement in a company. It brings more perspectives, thereby enabling teams to make more thorough and creative decisions. Furthermore, it upgrades a company's reputation, allowing it to connect with the community on a deeper level.
 
-2. For many industries, the most obvious and important hurdle or obstacle of achieving diversity is having gender balance. Each industry has its own gender balance with some dominated by men and some being more balanced. It is important to look at different industries and how they have changed over time in order to learn how some industries excel at gender inclusivity and some lag behind.
+For many industries, the most critical benchmark for achieving diversity is through gender. Historically, different jobs have had various degrees of gender balance, and they are still evolving today. Despite this progress, there are still a lot more male-dominated occupations than balanced or female-dominated groups. Therefore, there are still lots of room for improvement. For researchers or any other stakeholders looking to improve gender balance in specific industries, it is essential to explore and compare the historical trends on gender balance in relevant jobs in order to find insights on obstacles, identify good and bad examples on gender balance, and get guidance on directing future research efforts.
 
-3. As a result, it is valuable for researchers or any kinds of stakeholders who are interested in tackling this worthy problem to look at data of different industries and discern trends or patterns. This exploration of data will allow them to ask more informative questions that help achieve gender diversity.
-
-4. We propose an app that makes this exploration possible. In particular, this app will allow stakeholders to look at the trend of job gender groups over time and track progress of how jobs that have gender balance grow compared to those that don't. Also, since male-dominated jobs are particularly prevalent even today, users should find it interesting to look at how the industries that employ the most men and women historically do on gender balance. It will be valuable to draw comparisons and insights from looking at these jobs.
-
-5. Describe the app - a line chart looking at trends and two charts looking at how top 10 jobs that employ the most men and women perform on gender balance.  
+We propose building an application that makes this exploration possible. In particular, this web application will provide dashboards that portray historical trends of different job gender groups, such as male-dominated, female-dominated, or male-only jobs, and how specific jobs' gender proportions have evolved. Users will be able to see the general trends and track their progress as well as look more deeply into the jobs they are interested in and see how their gender balances have changed. They will be able to identify problems, draw comparisons, and find insights that inform them further on how to improve gender balance in specific industries.
 
 ### Description of the data
 
