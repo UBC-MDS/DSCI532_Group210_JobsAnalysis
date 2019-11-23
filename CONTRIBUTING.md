@@ -16,9 +16,7 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 1. Fork the repo and create your branch from `master`.
 2. If you've added code that should be tested, add tests.
 3. If you've changed APIs, update the documentation.
-4. Ensure the test suite passes.
-5. Make sure your code lints.
-6. Issue that pull request!
+4. Issue that pull request!
 
 ## Any contributions you make will be under the MIT Software License
 In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern.
@@ -27,7 +25,7 @@ In short, when you submit code changes, your submissions are understood to be un
 We use GitHub issues to track public bugs. Report a bug by [opening a new issue](); it's that easy!
 
 ## Write bug reports with detail, background, and sample code
-[This is an example](http://stackoverflow.com/q/12488905/180626) of a bug report I wrote, and I think it's not a bad model. Here's [another example from Craig Hockenberry](http://www.openradar.me/11905408), an app developer whom I greatly respect.
+[This is an example](http://stackoverflow.com/q/12488905/180626) of a good bug report. Here's [another example from Craig Hockenberry](http://www.openradar.me/11905408), a respected app developer.
 
 **Great Bug Reports** tend to have:
 
@@ -42,7 +40,7 @@ We use GitHub issues to track public bugs. Report a bug by [opening a new issue]
 People *love* thorough bug reports. I'm not even kidding.
 
 ## Use a Consistent Coding Style
-I'm again borrowing these from [Facebook's Guidelines](https://github.com/facebook/draft-js/blob/a9316a723f9e918afde44dea68b5f9f39b7d9b00/CONTRIBUTING.md)
+We will be referring to [Facebook's Guidelines](https://github.com/facebook/draft-js/blob/a9316a723f9e918afde44dea68b5f9f39b7d9b00/CONTRIBUTING.md)
 
 * 2 spaces for indentation rather than tabs
 * You can try running `npm run lint` for style unification
