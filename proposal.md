@@ -1,4 +1,6 @@
-### Motivation and Purpose
+# App Proposal (Milestone 1) - Group 210
+
+## Motivation and Purpose:
 
 Diversity has been shown consistently by research to be conducive to increased innovation, productivity, and employee engagement in a company. It brings more perspectives, thereby enabling teams to make more thorough and creative decisions. Furthermore, it upgrades a company's reputation, allowing it to connect with the community on a deeper level.
 
@@ -6,10 +8,16 @@ For many industries, the most critical benchmark for achieving diversity is thro
 
 We propose building an application that makes this exploration possible. In particular, this web application will provide dashboards that portray historical trends of different job gender groups, such as male-dominated, female-dominated, or male-only jobs, and how specific jobs' gender proportions have evolved. Users will be able to see the general trends and track their progress as well as look more deeply into the jobs they are interested in and see how their gender balances have changed. They will be able to identify problems, draw comparisons, and find valuable clues that inform them further on how to improve gender balance in specific industries.
 
-### Description of the data
+## Description of the data:
 
 In this project, we will be visualizing the gender makeup of job workforces from 255 different jobs between the years 1850 and 2000. Each of the 7650 workforces in our data have 5 associated variables that describe their job name (`job`), the binary sex of the workforce (`sex`), the decade their information was collected (`year`), and the proportion of the workforce to that of the decade's total workforce (`perc`). Using this data, we will also derive two new variables for each workforce. The first is the dominant sex of that workforce's job in that decade (`gender_dominant_group`), and it is based on the ratio of men to women in that job in that decade (only male, male dominant, balanced, female dominant, only female). The second is the proportion of the workforce to that of their job's total workforce in that decade (`annual_gender_prop_in_job`).
 
-### Research questions and usage scenarios
+## Research questions and usage scenarios:
+
+### Reasearch Questions:
+- How has the number male-only, male-dominated, balanced, female-dominated, and female-only jobs changed from 1850 to 2000? Does industry have an effect on this?
+- Which jobs have hired the most men and women respectively between 1850 and 2000? Are these jobs balanced in their gender makeup? How has the gender balance changed in these jobs over time?
+
+### Usage Scenario:
 
 Naomi is a researcher in a reputable HR consulting company that often gets contracted by companies to help them grow or restructure their workforces. Naomi knows that achieving a gender balance is crucial to a company for many reasons, so she wants to be able to [explore] historical data on the gender balance of various industry occupations to [gain insights] on the history of gender diversity in those industries and [devise theories] on why they were less than optimal. She also wants to [identify] both industry leaders in gender balance, and those with extreme inequality, to be able to learn from them . When Naomi goes on our website, she will be able to see an overview of the data including the number of jobs for which data is available and the various industries those jobs come from.  She will also be able to explore the historical trends of dominant sexes within a company’s industry by selecting it’s industry and seeing how the gender diversity has evolved over time, and she can see how it compares to other industries. She will also be able to see trends in gender balance for specific jobs, which she could see for the most balanced jobs, or for those with the most inequality on either end of the spectrum, by selecting a job from those available. When Naomi uses our website to do research for a mining company, she may find that certain engineering jobs, present in the mining company, have been historically male dominated, but that academia as an industry has been very well balanced historically. As a result, Naomi is able to further look into how universities are able to diversify their workforces, and then apply her findings to the engineering jobs within the company.
