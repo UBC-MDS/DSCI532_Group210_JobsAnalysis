@@ -14,7 +14,7 @@ In this project, we will be visualizing the gender makeup of job workforces from
 
 ## Research questions and usage scenarios:
 
-### Reasearch Questions:
+### Research Questions:
 - How has the number male-only, male-dominated, balanced, female-dominated, and female-only jobs changed from 1850 to 2000? Does industry have an effect on this?
 - Which jobs have hired the most men and women respectively between 1850 and 2000? Are these jobs balanced in their gender makeup? How has the gender balance changed in these jobs over time?
 
