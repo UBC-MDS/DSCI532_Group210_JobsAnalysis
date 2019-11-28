@@ -71,7 +71,7 @@ app.layout = html.Div([
         )
     ]),
     html.Div([
-
+        
         html.Div([
             html.Label('Gender Balance'),
             dcc.Dropdown(
@@ -84,6 +84,8 @@ app.layout = html.Div([
                 value='female dominated',
                 placeholder="Select a gender balance...")
         ]),
+
+        html.Label('Click on a bar to see data for an individual job, and use shift+click to toggle additional jobs'),
 
         html.Iframe(
             id='job-proportions-plot',
