@@ -109,8 +109,8 @@ def get_interactive_proportions_plot(gender_balance):
     ).transform_filter(
         pts
     ).properties(
-        width=550,
-        height=250,
+        width=575,
+        height=375,
         title="Proportion of Women by Year"
     )
 
@@ -138,7 +138,7 @@ def get_interactive_proportions_plot(gender_balance):
     data = source
     )
 
-    bar = alt.Chart(source).mark_bar(size=20).encode(
+    bar = alt.Chart(source).mark_bar(size=30).encode(
     y=alt.Y('job:N',
             title='',
             sort=alt.EncodingSortField(field="total_prop_female",op="sum",order="descending" )),
@@ -148,7 +148,7 @@ def get_interactive_proportions_plot(gender_balance):
     color=alt.condition(pts, alt.Color('job:N', legend=None), alt.ColorValue("grey"))
     ).properties(
         width=250,
-        height=250,
+        height=375,
         title= "Jobs by Proportion of Women (For the 10 most " + gender_balance + " jobs)"
     ).add_selection(pts)
 
@@ -158,7 +158,8 @@ def get_interactive_proportions_plot(gender_balance):
     ).resolve_legend(
         color="independent",
         size="independent"
-    )
+    ).configure_axis(labelFontSize=13,
+                     titleFontSize= 14)
     # Save html as a StringIO object in memory
     job_gender_proportions_html = io.StringIO()
     interactive_job_chart.save(job_gender_proportions_html, 'html')
