@@ -50,6 +50,7 @@ app.layout = html.Div([
         )
     ]),
 
+        
     html.Div([
         dcc.Checklist(
                 id='dominancy_groups',
@@ -66,6 +67,32 @@ app.layout = html.Div([
             height='400',
             width='800',
             sandbox='allow-scripts',
+            className="chartframe"
+        )
+    ]),
+    html.Div([
+
+        html.Div([
+            html.Label('Gender Balance'),
+            dcc.Dropdown(
+                id='gender_balance',
+                options=[
+                    {'label': 'Female Dominated', 'value': 'female dominated'},
+                    {'label': 'Balanced', 'value': 'balanced'},
+                    {'label': 'Male Dominated', 'value': 'male dominated'}
+                ],
+                value='female dominated',
+                placeholder="Select a gender balance...")
+        ]),
+
+        html.Iframe(
+            id='job-proportions-plot',
+            height='800',
+            width='1300',
+            sandbox='allow-scripts',
+
+            # This is where we will pass the html
+            # srcDoc= ... ,
             className="chartframe"
         )
     ])
@@ -87,6 +114,13 @@ def update_single_job_plot(job_name):
 def update_job_dominancy_plot(selected_groups):
     return callback_functions.get_gender_dominancy_graph(selected_groups)
 
+
+@app.callback(
+    dash.dependencies.Output('job-proportions-plot', 'srcDoc'),
+    [dash.dependencies.Input('gender_balance', 'value')]
+)
+def update_interactive_proportions_plot(gender_balance):
+    return callback_functions.get_interactive_proportions_plot(gender_balance)
 
 if __name__ == "__main__":
     app.run_server(debug=True, port=5001)
