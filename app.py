@@ -41,7 +41,7 @@ app.layout = html.Div([
         html.Iframe(
             id='single-job-plot',
             height='400',
-            width='800',
+            width='100%',
             sandbox='allow-scripts',
 
             # This is where we will pass the html
@@ -50,7 +50,7 @@ app.layout = html.Div([
         )
     ]),
 
-        
+
     html.Div([
         dcc.Checklist(
                 id='dominancy_groups',
@@ -65,13 +65,13 @@ app.layout = html.Div([
         html.Iframe(
             id='job-dominancy-plot',
             height='400',
-            width='800',
+            width='100%',
             sandbox='allow-scripts',
             className="chartframe"
         )
     ]),
     html.Div([
-        
+
         html.Div([
             html.Label('Gender Balance'),
             dcc.Dropdown(

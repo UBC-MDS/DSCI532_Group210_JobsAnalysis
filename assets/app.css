@@ -1,22 +1,24 @@
 .banner {
-    height: 75px;
+    height: 100px;
     margin: 0px -10px 10px;
     background-color: rgb(66, 196, 247);
     border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .banner h2{
     color: white;
     padding-top: 10px;
     margin-left: 2%;
-    display: inline-block;
 }
 
 .banner Img{
     position: relative;
-    float: right;
-    right: 10px;
     height: 75px;
+    margin-right: 20px;
+    border-radius: 5px;
 }
 
 .jobdropdown{
