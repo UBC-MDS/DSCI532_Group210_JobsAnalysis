@@ -10,25 +10,31 @@ gender_dominancy_df = data_wrangling.get_gender_dominant_group_count_df()
 def update_job_name_by_gender(job_name):
 
     job_counts_by_gender = alt.Chart(jobs).mark_line().encode(
-        alt.X('year:O'),
-        alt.Y('count:Q'),
+        alt.X('year:O', title='Year'),
+        alt.Y('count:Q', title='Count'),
         color='sex:N'
     ).transform_filter(
         alt.datum.job == job_name
     ).properties(
         width=250,
-        height=250
+        height=250,
+        title='Employment number by year'
     )
 
     job_percentages_by_gender = alt.Chart(jobs).mark_line().encode(
-        alt.X('year:O'),
-        alt.Y('perc:Q', axis=alt.Axis(format='%')),
+        alt.X('year:O', title='Year'),
+        alt.Y(
+            'perc:Q',
+            axis=alt.Axis(format='%'),
+            title='Percentage'
+        ),
         color='sex:N'
     ).transform_filter(
         alt.datum.job == job_name
     ).properties(
         width=250,
-        height=250
+        height=250,
+        title='Percentage employed on the job market'
     )
 
     chart = job_counts_by_gender | job_percentages_by_gender
