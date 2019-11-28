@@ -7,11 +7,13 @@ import pandas as pd
 import sqlalchemy
 import altair as alt
 import io
+import base64
+import os
+
 from vega_datasets import data
 
 # Don't need this with the cars dataset
 alt.data_transformers.enable('default', max_rows=10000)
-
 
 def modify_a():
     """
@@ -29,27 +31,21 @@ jobs = data.jobs()
 jobs_modified_a = modify_a()
 jobs_modified_b = modify_b()
 
-
 app = dash.Dash(__name__)
-app.css.append_css({'external_url':
-                    'https://cdn.rawgit.com/gschivley/8040fc3c7e11d2a4e7f0589ffc829a02/raw/fe763af6be3fc79eca341b04cd641124de6f6f0d/dash.css'
-                    })
-app.title = 'Test dash and altair'
+app.title = 'Job Analysis'
 server = app.server
-
 
 app.layout = html.Div([
 
-    html.Div([
-        html.H2("Job Analysis App"),
-        html.Img(src="/assets/icons.png")
+    html.H2([
+        html.Img(src='/assets/icons.png'),
+        html.Span("Job Analysis App")
     ], className="banner"),
 
     html.Div([
 
         html.Div([
             html.Label('Jobs'),
-            # dcc.Input(id='mother_birth', value=1952, type='number'),
             dcc.Dropdown(
                 id='job_name',
                 options=[{'label': i, 'value': i} for i in jobs.job.unique()],
@@ -79,25 +75,31 @@ app.layout = html.Div([
 )
 def update_job_name_by_gender(job_name):
     job_counts_by_gender = alt.Chart(jobs).mark_line().encode(
-        alt.X('year:O'),
-        alt.Y('count:Q'),
+        alt.X('year:O', title='Year'),
+        alt.Y('count:Q', title='Count'),
         color='sex:N'
     ).transform_filter(
         alt.datum.job == job_name
     ).properties(
         width=250,
-        height=250
+        height=250,
+        title='Employment number by year'
     )
 
     job_percentages_by_gender = alt.Chart(jobs).mark_line().encode(
-        alt.X('year:O'),
-        alt.Y('perc:Q', axis=alt.Axis(format='%')),
+        alt.X('year:O', title='Year'),
+        alt.Y(
+            'perc:Q',
+            axis=alt.Axis(format='%'),
+            title='Percentage'
+        ),
         color='sex:N'
     ).transform_filter(
         alt.datum.job == job_name
     ).properties(
         width=250,
-        height=250
+        height=250,
+        title='Percentage employed on the job market'
     )
 
     chart = job_counts_by_gender | job_percentages_by_gender
