@@ -85,7 +85,7 @@ app.layout = html.Div([
                 placeholder="Select a gender balance...")
         ]),
 
-        html.Label('Click on a bar to see data for an individual job, and use shift+click to toggle additional jobs'),
+        html.Label('Click on a bar to see data for an individual job, and use shift+click to toggle additional jobs. Double-click to cancel selections.'),
 
         html.Iframe(
             id='job-proportions-plot',
