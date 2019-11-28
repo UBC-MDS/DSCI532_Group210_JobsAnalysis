@@ -105,13 +105,13 @@ def get_interactive_proportions_plot(gender_balance):
           title="Proportion of Women",
           axis=alt.Axis(format='%'), 
           scale=alt.Scale(domain=[0,1])),
-    alt.Color('job:N', title= "Job")
+    alt.Color('job:N', legend = None)
     ).transform_filter(
         pts
     ).properties(
-        width=550,
-        height=200,
-        title="Proportion of women by decade"
+        width=575,
+        height=375,
+        title="Proportion of Women by Year"
     )
 
     label = alt.selection_single(
@@ -138,27 +138,28 @@ def get_interactive_proportions_plot(gender_balance):
     data = source
     )
 
-    bar = alt.Chart(source).mark_bar(size=25).encode(
+    bar = alt.Chart(source).mark_bar(size=30).encode(
     y=alt.Y('job:N',
             title='',
             sort=alt.EncodingSortField(field="total_prop_female",op="sum",order="descending" )),
     x=alt.X('total_prop_female:Q',
-            title="Total Proportion of Women",
+            title="Proportion of Women",
             axis=alt.Axis(format='%')),
     color=alt.condition(pts, alt.Color('job:N', legend=None), alt.ColorValue("grey"))
     ).properties(
-        width=200,
-        height=300,
-        title= "Top 10 " + gender_balance + " jobs (Shift+click on bars to see individual data for selected jobs)"
+        width=250,
+        height=375,
+        title= "Jobs by Proportion of Women (For the 10 most " + gender_balance + " jobs)"
     ).add_selection(pts)
 
     interactive_job_chart = alt.hconcat(
-        bar,
-        lin_w_interaction
+        lin_w_interaction,
+        bar
     ).resolve_legend(
         color="independent",
         size="independent"
-    )
+    ).configure_axis(labelFontSize=13,
+                     titleFontSize= 14)
     # Save html as a StringIO object in memory
     job_gender_proportions_html = io.StringIO()
     interactive_job_chart.save(job_gender_proportions_html, 'html')
