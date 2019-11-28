@@ -78,9 +78,6 @@ def get_gender_dominancy_graph(dominancy_groups):
         chart.mark_circle().encode(
             opacity=alt.condition(label, alt.value(1), alt.value(0))
         ).add_selection(label),
-        chart.mark_text(align='left', dx=5, dy=-5, stroke='white', strokeWidth=2).encode(
-            text='total:Q'
-        ).transform_filter(label),
         chart.mark_text(align='left', dx=5, dy=-5).encode(
             text='total:Q'
         ).transform_filter(label),
