@@ -3,18 +3,12 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-import pandas as pd
-import sqlalchemy
-import altair as alt
-import io
-import sys
-from vega_datasets import data
 import dash_bootstrap_components as dbc
+
+import sys
 sys.path.append('src')
 from src import callback_functions
 from src import data_wrangling
-
-jobs = data.jobs()
 
 app = dash.Dash(__name__)
 app.css.append_css({
