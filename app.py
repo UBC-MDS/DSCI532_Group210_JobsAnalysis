@@ -3,35 +3,18 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-import pandas as pd
-import sqlalchemy
-import altair as alt
-import io
-import base64
-import os
+import dash_bootstrap_components as dbc
 
-from vega_datasets import data
-
-# Don't need this with the cars dataset
-alt.data_transformers.enable('default', max_rows=10000)
-
-def modify_a():
-    """
-    Placeholder for all data wrangling
-    """
-    return data.jobs()
-
-def modify_b():
-    """
-    Placeholder for all data wrangling
-    """
-    return data.jobs()
-
-jobs = data.jobs()
-jobs_modified_a = modify_a()
-jobs_modified_b = modify_b()
+import sys
+sys.path.append('src')
+from src import callback_functions
+from src import data_wrangling
 
 app = dash.Dash(__name__)
+app.css.append_css({
+    'external_url':
+        'https://cdn.rawgit.com/gschivley/8040fc3c7e11d2a4e7f0589ffc829a02/raw/fe763af6be3fc79eca341b04cd641124de6f6f0d/dash.css'
+})
 app.title = 'Job Analysis'
 server = app.server
 
@@ -48,68 +31,62 @@ app.layout = html.Div([
             html.Label('Jobs'),
             dcc.Dropdown(
                 id='job_name',
-                options=[{'label': i, 'value': i} for i in jobs.job.unique()],
-                value=jobs.job.unique()[0],
-                placeholder="Select a job name..."
-            )
-        ], className='jobdropdown')
+                options=[{
+                    'label': i, 'value': i
+                } for i in data_wrangling.get_unique_job_names()],
+                value=data_wrangling.get_unique_job_names()[0],
+                placeholder="Select a job name...")
+        ]),
+
+        html.Iframe(
+            id='single-job-plot',
+            height='400',
+            width='800',
+            sandbox='allow-scripts',
+
+            # This is where we will pass the html
+            # srcDoc= ... ,
+            className="chartframe"
+        )
     ]),
 
-    html.Iframe(
-        id='plot',
-        height='500',
-        width='1000',
-        sandbox='allow-scripts',
+    html.Div([
+        dcc.Checklist(
+                id='dominancy_groups',
+                options=[
+                    {
+                        'label': i, 'value': i
+                    } for i in data_wrangling.get_gender_dominancy_groups()
+                ],
+                value=data_wrangling.get_gender_dominancy_groups()
+        ),
 
-        # This is where we will pass the html
-        # srcDoc= ... ,
-        className="chartframe"
-    )
+        html.Iframe(
+            id='job-dominancy-plot',
+            height='400',
+            width='800',
+            sandbox='allow-scripts',
+            className="chartframe"
+        )
+    ])
 ])
 
+
 @app.callback(
-    dash.dependencies.Output('plot', 'srcDoc'),
-    [
-        dash.dependencies.Input('job_name', 'value')
-    ]
+    dash.dependencies.Output('single-job-plot', 'srcDoc'),
+    [dash.dependencies.Input('job_name', 'value')]
 )
-def update_job_name_by_gender(job_name):
-    job_counts_by_gender = alt.Chart(jobs).mark_line().encode(
-        alt.X('year:O', title='Year'),
-        alt.Y('count:Q', title='Count'),
-        color='sex:N'
-    ).transform_filter(
-        alt.datum.job == job_name
-    ).properties(
-        width=250,
-        height=250,
-        title='Employment number by year'
-    )
+def update_single_job_plot(job_name):
+    return callback_functions.update_job_name_by_gender(job_name)
 
-    job_percentages_by_gender = alt.Chart(jobs).mark_line().encode(
-        alt.X('year:O', title='Year'),
-        alt.Y(
-            'perc:Q',
-            axis=alt.Axis(format='%'),
-            title='Percentage'
-        ),
-        color='sex:N'
-    ).transform_filter(
-        alt.datum.job == job_name
-    ).properties(
-        width=250,
-        height=250,
-        title='Percentage employed on the job market'
-    )
 
-    chart = job_counts_by_gender | job_percentages_by_gender
+@app.callback(
+    dash.dependencies.Output('job-dominancy-plot', 'srcDoc'),
+    [dash.dependencies.Input('dominancy_groups', 'value')]
+)
+def update_job_dominancy_plot(selected_groups):
+    return callback_functions.get_gender_dominancy_graph(selected_groups)
 
-    # Save html as a StringIO object in memory
-    jobs_by_gender_html = io.StringIO()
-    chart.save(jobs_by_gender_html, 'html')
-
-    # Return the html from StringIO object
-    return jobs_by_gender_html.getvalue()
 
 if __name__ == "__main__":
     app.run_server(debug=True, port=5001)
