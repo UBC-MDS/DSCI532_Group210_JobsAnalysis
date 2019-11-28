@@ -38,7 +38,7 @@ server = app.server
 app.layout = html.Div([
 
     html.H2([
-        html.Img(src='/assets/icons.png'),
+        html.Img(src='/assets/job.png'),
         html.Span("Job Analysis App")
     ], className="banner"),
 
