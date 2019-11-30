@@ -15,14 +15,14 @@ def update_job_name_by_gender(job_name):
 
     chart = alt.Chart(jobs).mark_line().encode(
         alt.X('year:O', title='Year'),
-        alt.Y('count:Q', title='Number of Employees'),
-        color='sex:N'
+        alt.Y('count:Q', axis=alt.Axis(format='~s', title='Number of Employees')),
+        color=alt.Color('sex:N', legend=alt.Legend(title="Genders"))
     ).transform_filter(
         alt.datum.job == job_name
     ).properties(
         width=500,
         height=250,
-        title='Employment number by year'
+        title='Number of Employmees by Year'
     ).configure_axis(
         labelFontSize=14,
         titleFontSize=14
@@ -47,10 +47,10 @@ def get_gender_dominancy_graph(dominancy_groups):
         x=alt.X('year:O', axis=alt.Axis(title='Year')),
         y=alt.Y('total', axis=alt.Axis(title='Number of Jobs')),
         color=alt.Color('job_gender_dominant_group',
-                        legend=alt.Legend(title="Job gender dominant group"),
+                        legend=alt.Legend(title="Job Gender Dominant Group"),
                         sort=['male dominant', 'only male', 'balanced', 'female dominant', 'only female'])
     ).properties(
-        title='Number of job gender dominant groups by year',
+        title='Number of Job Gender Dominant Groups by Year',
         height=250,
         width=500
     )
