@@ -141,6 +141,7 @@ app.layout = html.Div([
             ),
             html.Div(
                 children=[
+                    html.P('Click on a bar to see data for an individual job, and use shift+click to toggle additional jobs. Double-click to cancel selections.'),
                     html.Iframe(
                         id='job-proportions-plot',
                         height='800',
