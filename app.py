@@ -36,16 +36,16 @@ app.layout = html.Div([
     html.Div([
 
         html.Div([
-            html.Label(
-                'Jobs - select a job to see its male and female employment trends'
-            ),
+            html.Label('Jobs'),
             dcc.Dropdown(
                 id='job_name',
                 options=[{
                     'label': i, 'value': i
                 } for i in data_wrangling.get_unique_job_names()],
                 value=data_wrangling.get_unique_job_names()[0],
-                placeholder="Select a job name...")
+                placeholder="Select a job name..."
+            ),
+            html.Label('Select a job to see its male and female employment trends')
         ]),
 
         html.P(),
@@ -66,6 +66,7 @@ app.layout = html.Div([
     html.Div([
         dcc.Checklist(
                 id='dominancy_groups',
+                className='checklist',
                 options=[
                     {
                         'label': i, 'value': i
@@ -73,6 +74,7 @@ app.layout = html.Div([
                 ],
                 value=data_wrangling.get_gender_dominancy_groups()
         ),
+        html.Label('Toggle groups to compare their trends'),
 
         html.P(),
 
