@@ -33,89 +33,130 @@ app.layout = html.Div([
         over the decades.
     '''),
 
-    html.Div([
-
-        html.Div([
-            html.Label('Jobs'),
-            dcc.Dropdown(
-                id='job_name',
-                options=[{
-                    'label': i, 'value': i
-                } for i in data_wrangling.get_unique_job_names()],
-                value=data_wrangling.get_unique_job_names()[0],
-                placeholder="Select a job name..."
+    # FIRST ROW
+    html.Div(
+        children = [
+            html.Div(
+                children=[
+                    html.Div(
+                        className="dropdown",
+                        children=[
+                            html.Label(
+                                'Select a job to see its male and female employment trends'),
+                            dcc.Dropdown(
+                                id='job_name',
+                                options=[{'label': i, 'value': i}
+                                         for i in data_wrangling.get_unique_job_names()],
+                                value=data_wrangling.get_unique_job_names()[0],
+                                placeholder="Select a job name...",
+                                className="dropdown-content"
+                            )
+                        ]
+                    )
+                ],
+                className="column side"
             ),
-            html.Label('Select a job to see its male and female employment trends')
-        ]),
+            html.Div(
+                children=[
+                    html.Iframe(
+                        id='single-job-plot',
+                        height='400',
+                        width='100%',
+                        sandbox='allow-scripts',
 
-        html.P(),
-
-        html.Iframe(
-            id='single-job-plot',
-            height='400',
-            width='100%',
-            sandbox='allow-scripts',
-
-            # This is where we will pass the html
-            # srcDoc= ... ,
-            className="chartframe"
-        )
-    ]),
-
-
-    html.Div([
-        dcc.Checklist(
-                id='dominancy_groups',
-                className='checklist',
-                options=[
-                    {
-                        'label': i, 'value': i
-                    } for i in data_wrangling.get_gender_dominancy_groups()
+                        # This is where we will pass the html
+                        # srcDoc= ... ,
+                        className="chartframe"
+                    )
                 ],
-                value=data_wrangling.get_gender_dominancy_groups()
-        ),
-        html.Label('Toggle groups to compare their trends'),
+                className="column middle"
+            ),
+        ],
+        className="row"
+    ),
 
-        html.P(),
-
-        html.Iframe(
-            id='job-dominancy-plot',
-            height='400',
-            width='100%',
-            sandbox='allow-scripts',
-            className="chartframe"
-        )
-    ]),
-    html.Div([
-
-        html.Div([
-            html.Label('Gender Balance'),
-            dcc.Dropdown(
-                id='gender_balance',
-                options=[
-                    {'label': 'Female Dominated', 'value': 'female dominated'},
-                    {'label': 'Balanced', 'value': 'balanced'},
-                    {'label': 'Male Dominated', 'value': 'male dominated'}
+    # SECOND ROW
+    html.Div(
+        children = [
+            html.Div(
+                children=[
+                    html.Div(
+                        children=[
+                            html.Label('Toggle groups to compare their trends.'),
+                            dbc.Checklist(
+                                id='dominancy_groups',
+                                className='checklist',
+                                options=[{'label': i, 'value': i} for i in data_wrangling.get_gender_dominancy_groups()],
+                                value=data_wrangling.get_gender_dominancy_groups()
+                            )
+                        ]
+                    )
                 ],
-                value='female dominated',
-                placeholder="Select a gender balance...")
-        ]),
+                className="column side"
+            ),
+            html.Div(
+                children=[
+                    html.Iframe(
+                        id='job-dominancy-plot',
+                        height='400',
+                        width='100%',
+                        sandbox='allow-scripts',
 
-        html.Label('Click on a bar to see data for an individual job, and use shift+click to toggle additional jobs. Double-click to cancel selections.'),
+                        # This is where we will pass the html
+                        # srcDoc= ... ,
+                        className="chartframe"
+                    )
+                ],
+                className="column middle"
+            ),
+        ],
+        className="row"
+    ),
 
-        html.P(),
+    # THIRD ROW
+    html.Div(
+        children = [
+            html.Div(
+                children=[
+                    html.Div(
+                        className="dropdown",
+                        children=[
+                            html.Label('Select a gender balance.'),
+                            dcc.Dropdown(
+                                id='gender_balance',
+                                clearable= False,
+                                className='dropdown-content',
+                                options=[
+                                    {'label': 'Female Dominated', 'value': 'female dominated'},
+                                    {'label': 'Balanced', 'value': 'balanced'},
+                                    {'label': 'Male Dominated', 'value': 'male dominated'}
+                                ],
+                                value='female dominated',
+                                placeholder="Select a gender balance..."
+                            )
+                        ]
+                    )
+                ],
+                className="column side"
+            ),
+            html.Div(
+                children=[
+                    html.Iframe(
+                        id='job-proportions-plot',
+                        height='800',
+                        width='100%',
+                        sandbox='allow-scripts',
 
-        html.Iframe(
-            id='job-proportions-plot',
-            height='800',
-            width='1300',
-            sandbox='allow-scripts',
-
-            # This is where we will pass the html
-            # srcDoc= ... ,
-            className="chartframe"
-        )
-    ])
+                        # This is where we will pass the html
+                        # srcDoc= ... ,
+                        className="chartframe"
+                    )
+                ],
+                className="column middle"
+            ),
+        ],
+        className="row"
+    )
 ])
 
 

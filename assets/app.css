@@ -21,33 +21,103 @@
     border-radius: 5px;
 }
 
-.jobdropdown{
-    width: '250px';
-    margin-right: 'auto';
-    margin-left: 'auto';
-    text-align: 'center';
-}
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: flex;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
 
 .chartframe{
     border-width: 0px;
 }
 
 .checklist {
-  background-color: #fff;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  color: #333;
-  border-spacing: 0;
-  border-collapse: separate;
-  height: 36px;
-  width: 570px;
-  overflow: hidden;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    /* display: inline-flex; */
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 250px;
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1; */
+   
 }
 
 .checklist label {
-  margin-right: 10px;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    /* display: block; */
 }
+
+
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  
+  /* Create three unequal columns that floats next to each other */
+  .column {
+    float: left;
+    padding: 10px;
+  }
+  
+  /* Left and right column */
+  .column.side {
+    width: 25%;
+  }
+  
+  /* Middle column */
+  .column.middle {
+    width: 75%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+      width: 100%;
+    }
+  }
+
+
+
+  /* CHECKBOXES*/
+
+  

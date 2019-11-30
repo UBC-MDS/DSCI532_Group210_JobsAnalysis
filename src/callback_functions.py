@@ -13,36 +13,16 @@ data_frames = {'balanced': pd.read_csv('data/top_10_balanced_jobs.csv'),
 
 def update_job_name_by_gender(job_name):
 
-    job_counts_by_gender = alt.Chart(jobs).mark_line().encode(
+    chart = alt.Chart(jobs).mark_line().encode(
         alt.X('year:O', title='Year'),
-        alt.Y('count:Q', title='Count'),
-        color='sex:N'
+        alt.Y('count:Q', axis=alt.Axis(format='~s', title='Number of Employees')),
+        color=alt.Color('sex:N', legend=alt.Legend(title="Genders"))
     ).transform_filter(
         alt.datum.job == job_name
     ).properties(
-        width=250,
+        width=500,
         height=250,
-        title='Employment number by year'
-    )
-
-    job_percentages_by_gender = alt.Chart(jobs).mark_line().encode(
-        alt.X('year:O', title='Year'),
-        alt.Y(
-            'perc:Q',
-            axis=alt.Axis(format='%'),
-            title='Percentage'
-        ),
-        color='sex:N'
-    ).transform_filter(
-        alt.datum.job == job_name
-    ).properties(
-        width=250,
-        height=250,
-        title='Percentage employed on the job market'
-    )
-
-    chart = (
-        job_counts_by_gender | job_percentages_by_gender
+        title='Number of Employmees by Year'
     ).configure_axis(
         labelFontSize=14,
         titleFontSize=14
@@ -67,10 +47,10 @@ def get_gender_dominancy_graph(dominancy_groups):
         x=alt.X('year:O', axis=alt.Axis(title='Year')),
         y=alt.Y('total', axis=alt.Axis(title='Number of Jobs')),
         color=alt.Color('job_gender_dominant_group',
-                        legend=alt.Legend(title="Job gender dominant group"),
+                        legend=alt.Legend(title="Job Gender Dominant Group"),
                         sort=['male dominant', 'only male', 'balanced', 'female dominant', 'only female'])
     ).properties(
-        title='Number of job gender dominant groups by year',
+        title='Number of Job Gender Dominant Groups by Year',
         height=250,
         width=500
     )
@@ -123,7 +103,7 @@ def get_interactive_proportions_plot(gender_balance):
     ).transform_filter(
         pts
     ).properties(
-        width=575,
+        width=500,
         height=375,
         title="Proportion of Women by Year"
     )
