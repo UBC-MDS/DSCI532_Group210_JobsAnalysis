@@ -25,6 +25,14 @@ app.layout = html.Div([
         html.Span("Job Analysis App")
     ], className="banner"),
 
+    html.H3('''
+        We are exploring a dataset of 255 jobs with both genders' hiring numbers
+        from 1850 to 2000 for each decade. We will look at how the gender
+        compositions in these jobs have evolved and how each job gender dominant
+        group, such as only female and male jobs, has changed in its prevalence
+        over the decades.
+    '''),
+
     html.Div([
 
         html.Div([
@@ -35,13 +43,17 @@ app.layout = html.Div([
                     'label': i, 'value': i
                 } for i in data_wrangling.get_unique_job_names()],
                 value=data_wrangling.get_unique_job_names()[0],
-                placeholder="Select a job name...")
+                placeholder="Select a job name..."
+            ),
+            html.Label('Select a job to see its male and female employment trends')
         ]),
+
+        html.P(),
 
         html.Iframe(
             id='single-job-plot',
             height='400',
-            width='800',
+            width='100%',
             sandbox='allow-scripts',
 
             # This is where we will pass the html
@@ -50,10 +62,11 @@ app.layout = html.Div([
         )
     ]),
 
-        
+
     html.Div([
         dcc.Checklist(
                 id='dominancy_groups',
+                className='checklist',
                 options=[
                     {
                         'label': i, 'value': i
@@ -61,17 +74,20 @@ app.layout = html.Div([
                 ],
                 value=data_wrangling.get_gender_dominancy_groups()
         ),
+        html.Label('Toggle groups to compare their trends'),
+
+        html.P(),
 
         html.Iframe(
             id='job-dominancy-plot',
             height='400',
-            width='800',
+            width='100%',
             sandbox='allow-scripts',
             className="chartframe"
         )
     ]),
     html.Div([
-        
+
         html.Div([
             html.Label('Gender Balance'),
             dcc.Dropdown(
@@ -86,6 +102,8 @@ app.layout = html.Div([
         ]),
 
         html.Label('Click on a bar to see data for an individual job, and use shift+click to toggle additional jobs. Double-click to cancel selections.'),
+
+        html.P(),
 
         html.Iframe(
             id='job-proportions-plot',

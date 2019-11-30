@@ -41,7 +41,15 @@ def update_job_name_by_gender(job_name):
         title='Percentage employed on the job market'
     )
 
-    chart = job_counts_by_gender | job_percentages_by_gender
+    chart = (
+        job_counts_by_gender | job_percentages_by_gender
+    ).configure_axis(
+        labelFontSize=14,
+        titleFontSize=14
+    ).configure_legend(
+        labelFontSize=13,
+        titleFontSize=13
+    )
 
     # Save html as a StringIO object in memory
     jobs_by_gender_html = io.StringIO()
@@ -64,7 +72,7 @@ def get_gender_dominancy_graph(dominancy_groups):
     ).properties(
         title='Number of job gender dominant groups by year',
         height=250,
-        width=400
+        width=500
     )
 
     label = alt.selection_single(
@@ -86,6 +94,12 @@ def get_gender_dominancy_graph(dominancy_groups):
             text='total:Q'
         ).transform_filter(label),
         data=df
+    ).configure_axis(
+        titleFontSize=15,
+        labelFontSize=15
+    ).configure_legend(
+        titleFontSize=13,
+        labelFontSize=13
     )
 
     # Save html as a StringIO object in memory
@@ -103,7 +117,7 @@ def get_interactive_proportions_plot(gender_balance):
     alt.X('year:O', title='Year'),
     alt.Y('female_prop:Q',
           title="Proportion of Women",
-          axis=alt.Axis(format='%'), 
+          axis=alt.Axis(format='%'),
           scale=alt.Scale(domain=[0,1])),
     alt.Color('job:N', legend = None)
     ).transform_filter(
@@ -159,13 +173,10 @@ def get_interactive_proportions_plot(gender_balance):
         color="independent",
         size="independent"
     ).configure_axis(labelFontSize=13,
-                     titleFontSize= 14)
+                     titleFontSize=14)
     # Save html as a StringIO object in memory
     job_gender_proportions_html = io.StringIO()
     interactive_job_chart.save(job_gender_proportions_html, 'html')
 
     # Return the html from StringIO object
     return job_gender_proportions_html.getvalue()
-
-    
-    
