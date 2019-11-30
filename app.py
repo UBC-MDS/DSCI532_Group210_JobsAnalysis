@@ -25,10 +25,20 @@ app.layout = html.Div([
         html.Span("Job Analysis App")
     ], className="banner"),
 
+    html.H3('''
+        We are exploring a dataset of 255 jobs with both genders' hiring numbers
+        from 1850 to 2000 for each decade. We will look at how the gender
+        compositions in these jobs have evolved and how each job gender dominant
+        group, such as only female and male jobs, has changed in its prevalence
+        over the decades.
+    '''),
+
     html.Div([
 
         html.Div([
-            html.Label('Jobs'),
+            html.Label(
+                'Jobs - select a job to see its male and female employment trends'
+            ),
             dcc.Dropdown(
                 id='job_name',
                 options=[{
@@ -37,6 +47,8 @@ app.layout = html.Div([
                 value=data_wrangling.get_unique_job_names()[0],
                 placeholder="Select a job name...")
         ]),
+
+        html.P(),
 
         html.Iframe(
             id='single-job-plot',
@@ -62,6 +74,8 @@ app.layout = html.Div([
                 value=data_wrangling.get_gender_dominancy_groups()
         ),
 
+        html.P(),
+
         html.Iframe(
             id='job-dominancy-plot',
             height='400',
@@ -86,6 +100,8 @@ app.layout = html.Div([
         ]),
 
         html.Label('Click on a bar to see data for an individual job, and use shift+click to toggle additional jobs. Double-click to cancel selections.'),
+
+        html.P(),
 
         html.Iframe(
             id='job-proportions-plot',
