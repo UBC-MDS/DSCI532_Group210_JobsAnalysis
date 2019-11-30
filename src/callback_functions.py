@@ -13,7 +13,7 @@ data_frames = {'balanced': pd.read_csv('data/top_10_balanced_jobs.csv'),
 
 def update_job_name_by_gender(job_name):
 
-    job_counts_by_gender = alt.Chart(jobs).mark_line().encode(
+    chart = alt.Chart(jobs).mark_line().encode(
         alt.X('year:O', title='Year'),
         alt.Y('count:Q', title='Count'),
         color='sex:N'
@@ -23,26 +23,6 @@ def update_job_name_by_gender(job_name):
         width=250,
         height=250,
         title='Employment number by year'
-    )
-
-    job_percentages_by_gender = alt.Chart(jobs).mark_line().encode(
-        alt.X('year:O', title='Year'),
-        alt.Y(
-            'perc:Q',
-            axis=alt.Axis(format='%'),
-            title='Percentage'
-        ),
-        color='sex:N'
-    ).transform_filter(
-        alt.datum.job == job_name
-    ).properties(
-        width=250,
-        height=250,
-        title='Percentage employed on the job market'
-    )
-
-    chart = (
-        job_counts_by_gender | job_percentages_by_gender
     ).configure_axis(
         labelFontSize=14,
         titleFontSize=14
