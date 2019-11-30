@@ -15,12 +15,12 @@ def update_job_name_by_gender(job_name):
 
     chart = alt.Chart(jobs).mark_line().encode(
         alt.X('year:O', title='Year'),
-        alt.Y('count:Q', title='Count'),
+        alt.Y('count:Q', title='Number of Employees'),
         color='sex:N'
     ).transform_filter(
         alt.datum.job == job_name
     ).properties(
-        width=250,
+        width=500,
         height=250,
         title='Employment number by year'
     ).configure_axis(
@@ -103,7 +103,7 @@ def get_interactive_proportions_plot(gender_balance):
     ).transform_filter(
         pts
     ).properties(
-        width=575,
+        width=500,
         height=375,
         title="Proportion of Women by Year"
     )
