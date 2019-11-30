@@ -24,4 +24,4 @@
 
 ### Addressed issues
 
-We solved a bunch of issues for this milestone. We addressed the duplicated text in the README file by removing it. We picked a mechanic as a team on how to pick the top 10 jobs in terms of gender balance. Our axes were made to not change anymore after our TA gave us feedback. We made the menu panel more clear and added more information about the data based on the TA's feedback.
+We solved a bunch of issues for this milestone. We addressed the duplicated text in the README file by removing it. We picked a mechanic as a team on how to choose the top 10 jobs in terms of gender balance. Our axes were made not to change anymore after our TA gave us feedback. We made the menu panel more clear and added more information about the data based on the TA's feedback.
