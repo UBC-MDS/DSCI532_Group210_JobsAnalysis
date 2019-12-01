@@ -30,7 +30,16 @@ app.layout = html.Div([
         from 1850 to 2000 for each decade. We will look at how the gender
         compositions in these jobs have evolved and how each job gender dominant
         group, such as only female and male jobs, has changed in its prevalence
-        over the decades.
+        over the decades. This is one of the Vega datasets. Unfortunately, the
+        original source is unknown.
+    '''),
+
+    html.H3('''
+        We classify the jobs into gender groups based on their male-to-female
+        employment ratios. If it is more than 2, we classify the job as being
+        male dominant. If it is less than 0.5, we classify the job as being
+        female dominant. Male-only and female-only categories are self-explanatory.
+        We group the rest as being gender balanced.
     '''),
 
     # FIRST ROW
@@ -121,7 +130,9 @@ app.layout = html.Div([
                     html.Div(
                         className="dropdown",
                         children=[
-                            html.Label('Select a gender balance.'),
+                            html.Label('Select a gender balance'),
+                            html.Br(),
+                            html.Label('Based on total aggregated proportion over the time range'),
                             dcc.Dropdown(
                                 id='gender_balance',
                                 clearable= False,
