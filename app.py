@@ -25,6 +25,12 @@ app.layout = html.Div([
         html.Span("Job Analysis App")
     ], className="banner"),
 
+    html.A(
+        'Data source',
+        href='https://github.com/vega/vega-datasets/blob/master/sources.md#jobsjson',
+        target='_blank'
+    ),
+
     html.H3('''
         We are exploring a dataset of 255 jobs with both genders' hiring numbers
         from 1850 to 2000 for each decade. We will look at how the gender
