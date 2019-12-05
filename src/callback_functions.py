@@ -118,7 +118,7 @@ def get_interactive_proportions_plot(gender_balance):
     lin = alt.Chart(source).mark_line().encode(
     alt.X('year:O', title='Year', axis=alt.Axis(labelAngle = -45)),
     alt.Y('female_prop:Q',
-          title="Proportion of Women",
+          title="Female Percentage",
           axis=alt.Axis(format='%'),
           scale=alt.Scale(domain=[0,1])),
     alt.Color('job:N', legend = None)
@@ -127,7 +127,7 @@ def get_interactive_proportions_plot(gender_balance):
     ).properties(
         width=450,
         height=325,
-        title="Proportion of Women by Year"
+        title="Female Percentage in a Job by Year"
     )
 
     hrule = alt.Chart(pd.DataFrame({'y': [0.5]})).mark_rule(color = 'red', strokeDash=[5,5]).encode(
@@ -161,13 +161,17 @@ def get_interactive_proportions_plot(gender_balance):
             title='',
             sort=sort_order),
     x=alt.X('total_prop_female:Q',
-            title="Proportion of Women",
+            title="Female Percentage",
             axis=alt.Axis(format='%')),
-    color=alt.condition(pts, alt.Color('job:N', legend=None), alt.ColorValue("grey"))
+    color=alt.condition(pts, alt.Color('job:N', legend=None), alt.ColorValue("grey")),
+    tooltip = [
+        alt.Tooltip(field = "job", type = "nominal", title = "Job"),
+        alt.Tooltip(field = "total_prop_female", type = "quantitative", title = "Total Female Percentage", format='.2%')
+        ]
     ).properties(
         width=225,
         height=350,
-        title= "Jobs by Proportion of Women (For the 10 most " + gender_balance + " jobs)"
+        title= "Jobs by Total Female Percentage (For the 10 most " + gender_balance + " jobs)"
     ).add_selection(pts)
 
     bar_w_vrule = alt.layer(
