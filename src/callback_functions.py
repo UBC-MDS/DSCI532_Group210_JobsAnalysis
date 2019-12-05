@@ -91,7 +91,7 @@ def get_gender_dominancy_graph(dominancy_groups):
 
 def get_interactive_proportions_plot(gender_balance):
     source = data_frames[gender_balance]
-    pts = alt.selection(type="multi", encodings=['x'])
+    pts = alt.selection(type="multi", encodings=['x'],empty='none')
 
     lin = alt.Chart(source).mark_line().encode(
     alt.X('year:O', title='Year'),
