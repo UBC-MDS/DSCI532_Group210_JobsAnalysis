@@ -75,7 +75,7 @@ first_row = html.Div([
             html.Iframe(
                 id='single-job-plot',
                 height='400',
-                width='100%',
+                width='700',
                 sandbox='allow-scripts',
 
                 # This is where we will pass the html
@@ -107,7 +107,7 @@ second_row = html.Div([
             html.Iframe(
                 id='job-dominancy-plot',
                 height='400',
-                width='100%',
+                width='820',
                 sandbox='allow-scripts',
 
                 # This is where we will pass the html
@@ -148,7 +148,7 @@ third_row = html.Div([
         html.Iframe(
             id='job-proportions-plot',
             height='800',
-            width='100%',
+            width='1150',
             sandbox='allow-scripts',
 
             # This is where we will pass the html
@@ -165,7 +165,7 @@ main_app = html.Div([
     second_row,
     divider,
     third_row
-], className="container")
+], className="container main")
 
 footer = html.Footer([
     html.A(

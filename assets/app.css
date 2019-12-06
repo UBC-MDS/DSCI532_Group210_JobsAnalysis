@@ -1,3 +1,13 @@
+.main {
+  max-width: none;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.checklist label {
+  padding: 0 !important;
+}
+
 .logo {
     position: relative;
     height: 75px;
