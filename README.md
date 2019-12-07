@@ -11,5 +11,5 @@ In the third graph, an user will be able to view how the proportion of woman emp
 [App link](https://jobs-analysis-milestone2.herokuapp.com/)
 
 Sketch below shows how the main page will look approximately.
-
-![](images/new_mock.png)
+  
+![](images/new_mockup.png)
