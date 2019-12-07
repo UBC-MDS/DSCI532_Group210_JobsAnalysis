@@ -36,21 +36,13 @@ header = html.Div([
         ]),
 
         html.P('''
-            We are exploring a dataset of 255 jobs with both genders' hiring
-            numbers from 1850 to 2000 for each decade. We will look at how
-            the gender compositions in these jobs have evolved and how each
-            job gender dominant group, such as only female and male jobs,
-            has changed in its prevalence over the decades.
+            We are exploring a dataset of 255 jobs with both genders' employment
+            numbers from 1850 to 2000 for each decade. We will focus on how
+            the gender compositions in these jobs have evolved. An user might
+            use this dashboard to gain insights with these trends and
+            investigate how to improve gender balance in certain industries
+            or jobs.
         ''', className='lead my-3'),
-
-        html.H4('''
-            We classify the jobs into gender groups based on their
-            male-to-female employment ratios. If it is more than 2, we
-            classify the job as being male dominant. If it is less than 0.5,
-            we classify the job as being female dominant. Male-only and
-            female-only categories are self-explanatory. We group the rest
-            as being gender balanced.
-        ''', className='lead my-3')
     ], className='col-md-9 px-0')
 ], className="jumbotron p-4 p-md-5 text-white rounded bg-dark")
 
@@ -58,12 +50,13 @@ first_row = html.Div([
     html.Div([
         html.Div([
             html.Label(
-                'Select a job to see its male and female employment trends'
+                'Select a job'
             ),
             dcc.Dropdown(
                 id='job_name',
-                options=[{'label': i, 'value': i}
-                         for i in data_wrangling.get_unique_job_names()],
+                options=[{
+                    'label': i, 'value': i
+                } for i in data_wrangling.get_unique_job_names()],
                 value=data_wrangling.get_unique_job_names()[0],
                 placeholder="Select a job name...",
                 className="dropdown-content"
@@ -87,16 +80,24 @@ first_row = html.Div([
     ),
 ], className="row")
 
+gender_group_label_map = {
+    'male dominant': 'only male(more than two male to one female)',
+    'female dominant': 'only female(more than two females to one male)',
+    'balanced': 'balanced',
+    'only male': 'only male',
+    'only female': 'only female'
+}
+
 second_row = html.Div([
     html.Div([
         html.Div([
-            html.Label('Toggle groups to compare their trends.'),
+            html.Label('Toggle groups'),
             dbc.Checklist(
                 id='dominancy_groups',
                 className='checklist',
                 options=[
                     {
-                        'label': i, 'value': i
+                        'label': gender_group_label_map[i], 'value': i
                     } for i in data_wrangling.get_gender_dominancy_groups()
                 ],
                 value=data_wrangling.get_gender_dominancy_groups()
@@ -122,9 +123,6 @@ third_row = html.Div([
         html.Div([
             html.Label('Select a gender balance'),
             html.Br(),
-            html.Label(
-                'Based on total aggregated proportion over the time range'
-            ),
             dcc.Dropdown(
                 id='gender_balance',
                 clearable= False,
@@ -160,10 +158,24 @@ third_row = html.Div([
 
 main_app = html.Div([
     header,
+    html.P('''
+        Let's first look at the male and female employment trends of
+        individual jobs!
+    ''', className='lead mb-2 font-weight-bold'),
     first_row,
     divider,
+    html.P('''
+        Here, we will categorize the jobs into different gender dominant
+        groups, based on their male-to-female ratios, and look at their trends
+        over the decades.
+    ''', className='lead mb-2 font-weight-bold'),
     second_row,
     divider,
+    html.P('''
+        For the final graph, we will look at different top 10 jobs in terms of
+        their historical female employment proportion and investigate how their
+        gender balance has changed over time.
+    ''', className='lead mb-2 font-weight-bold'),
     third_row
 ], className="container main")
 
