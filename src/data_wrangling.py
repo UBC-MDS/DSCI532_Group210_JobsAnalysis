@@ -9,12 +9,12 @@ def get_unique_job_names():
     return data.jobs().job.unique()
 
 
-# Categorize each row into a gender dominant group 
+# Categorize each row into a gender dominant group
 # based on its male to female ratio of that year
-def categorize_gender_dominant_group(row):  
+def categorize_gender_dominant_group(row):
   male_count = row['count']['men']
   female_count = row['count']['women']
-  
+
   if male_count == 0 and female_count == 0:
     return 'no job'
   elif row['count']['women'] == 0:
@@ -44,8 +44,8 @@ def get_gender_dominant_group_count_df():
     jobs = get_jobs_df()
 
     grouped_jobs = jobs.pivot_table(
-        columns=['sex'], 
-        values=['count', 'perc'], 
+        columns=['sex'],
+        values=['count', 'perc'],
         index=['year', 'job']
     )
     grouped_jobs['gender_dominant_group'] = grouped_jobs.apply(categorize_gender_dominant_group, axis=1)
@@ -65,7 +65,7 @@ def get_gender_dominant_group_count_df():
 
     gender_dominant_group_count_df = gender_dominant_group_count_df.melt(
         id_vars=['year'],
-        var_name='job_gender_dominant_group', 
+        var_name='job_gender_dominant_group',
         value_name='total'
     )
 
