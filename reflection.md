@@ -8,6 +8,8 @@
 
 - With active and consensus-driven cooperation, each team member was able to do what they wanted and not get assigned to uninteresting tasks to ensure that the project was fun and enjoyable for everyone.
 
+- Our final product does a good job of allowing users to look at the gender balance trends from different angles. They can investigate a single job's gender proportion, compare job gender dominant groups' popularities, and explore the female employment numbers for the top 10 jobs in some of those groups. Basically, the application allows a variety of ways to gain insights on how the gender balance has been changing, and hence allow users to ask better questions on how to improve gender ratios in some industries.
+
 ### Limitations
 
 - We still had limited knowledge about the full extent of Dash's and Altair's capability for interactive graphs. We could not rule out the possibilities of more efficacious graphs that allow users to drill down to more valuable insights.    
@@ -24,4 +26,16 @@
 
 ### Addressed issues
 
-We solved a bunch of issues for this milestone. We addressed the duplicated text in the README file by removing it. We picked a mechanic as a team on how to choose the top 10 jobs in terms of gender balance. Our axes were made not to change anymore after our TA gave us feedback. We made the menu panel more clear and added more information about the data based on the TA's feedback. Also, we added more information about the source of the data and how the gender balance groups were derived to address that ambiguity raised by the TA. 
+We solved a bunch of issues for this milestone. We addressed the duplicated text in the README file by removing it. We picked a mechanic as a team on how to choose the top 10 jobs in terms of gender balance. Our axes were made not to change anymore after our TA gave us feedback. We made the menu panel more clear and added more information about the data based on the TA's feedback. Also, we added more information about the source of the data and how the gender balance groups were derived to address that ambiguity raised by the TA.
+
+### Wishlist features/bug-fixes
+
+Again, we mainly wish that we could group the jobs into industries and make a chart allowing the users to investigate the gender balance trends of different industries. We believe this chart will make the application more valuable to users because many of them may use the dashboard to look for industry insights in terms of historical gender employment trends and may find going through individual jobs to infer industry information too troublesome.
+
+### Changes we have made for milestone 3
+
+For project maintenance, we listened to much feedback and pushed a bunch of small fixes which mainly made the application more user friendly. We implemented bootstrap styles to make the app layout more standard and intuitive. We also added a description and a divider before each chart for clearer presentation. We decided against tweaking the team contract because we have worked well together as a team so far. In terms of UI changes, we rotated the x-axes on some charts and added tooltips to the bars so that it is easier on the eyes and more informative on the brain. We also refactored the code a bit so that the components were assigned to different variables as opposed to being all written out in one single variable. A list of changes we made could be found [here](https://github.com/UBC-MDS/DSCI532_Group210_JobsAnalysis/issues/36). In summary, we improved the text copies, layouts, user interface components of the app, and the code.
+
+### Feedback summary
+
+Overall, we received only minor feedback on the visual of the application, a few of its less-than-intuitive UI components and some of the confusing copies. There were quite a few complaints on the layouts and the copies being confusing, so we decided to implement the bootstrap layouts, re-write and change the placement of the copies. There were also some feedback regarding tweaks of the graphs' functionalities, but we do not quite agree on whether they are helpful. For instance, one feedback suggested we filled the zero job numbers with some reasonable numbers in some years, but we decided against making that judgement because of a lack of information on whether that would be more reflective of the reality. We put less priorities on extra features and more on UI issues because we want to make sure the current product is solid first. The feedback session was quite useful in terms of seeing our app from users' perspectives and understanding what was confusing, but we are pleased that our app, after the improvements, is user-friendly and offers values while being clean. 
