@@ -34,12 +34,8 @@ Again, we mainly wish that we could group the jobs into industries and make a ch
 
 ### Changes we have made for milestone 3
 
-For project maintenance, we listened to many feedback and made the application more user friendly. We implemented bootstrap styles to make the app layout more standard and intuitive. We also added a description and a divider before each chart for clearer presentation. We decided against tweaking the team contract because we have worked well together as a team so far.
+For project maintenance, we listened to many feedback and pushed a bunch of small fixes which mainly made the application more user friendly. We implemented bootstrap styles to make the app layout more standard and intuitive. We also added a description and a divider before each chart for clearer presentation. We decided against tweaking the team contract because we have worked well together as a team so far. In terms of UI changes, we rotated the x-axes on some charts and added tooltips to the bars so that it is easier on the eyes and more informative on the brain. We also refactored the code a bit so that the components were assigned to different variables as opposed to being all written out in one single variable. A list of changes we made could be found [here](https://github.com/UBC-MDS/DSCI532_Group210_JobsAnalysis/issues/36). In summary, we improved the text copies, layouts, user interface components of the app, and the code.
 
 ### Feedback summary
 
-A few visual complaints and user experience bugs. Nothing major.
-
-### Feedback usefulness
-
-Very useful to see how the app is used from an user's perspective.
+Overall, we received only minor feedback on the visual of the application, a few of its less-than-intuitive UI components and some of the confusing copies. There were quite a few complaints on the layouts and the copies being confusing, so we decided to implement the bootstrap layouts, re-write and change the placement of the copies. There were also some feedback regarding tweaks of the graphs' functionalities, but we do not quite agree on whether they are helpful. For instance, one feedback suggested we filled the zero job numbers with some reasonable numbers in some years, but we decided against making that judgement because of a lack of information on whether that would be more reflective of the reality. We put less priorities on extra features and more on UI issues because we want to make sure the current product is solid first. The feedback session was quite useful in terms of seeing our app from users' perspectives and understanding what was confusing, but we are pleased that our app, after the improvements, is user-friendly and offers values while being clean. 
