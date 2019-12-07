@@ -12,4 +12,4 @@ In the third graph, an user will be able to view how the proportion of woman emp
 
 Sketch below shows how the main page will look approximately.
 
-![](images/mock.png)
+![](images/new_mock.png)
