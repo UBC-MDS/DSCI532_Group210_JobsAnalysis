@@ -8,7 +8,7 @@ In the second graph, a user will be able to see and compare how different job ge
 
 In the third graph, a user will be able to view how the proportion of woman employees has evolved in the top 10 most male dominant, female dominant and balanced jobs. A user can pick which top 10 jobs they want to explore from the dropdown list and the bar chart shows the proportion of women employees in these jobs. To see the proportion of women over decades for an individual job, users can click on a bar and also by shift+click users will be able to toggle additional jobs.
 
-[App link](https://jobs-analysis-milestone2.herokuapp.com/)
+[App link](https://job-analysis-milestone3.herokuapp.com/)
 
 Sketch below shows how the main page will look approximately.
   
