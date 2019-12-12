@@ -81,8 +81,8 @@ first_row = html.Div([
 ], className="row")
 
 gender_group_label_map = {
-    'male dominant': 'only male(more than two male to one female)',
-    'female dominant': 'only female(more than two females to one male)',
+    'male dominant': 'male dominant(more than two male to one female)',
+    'female dominant': 'female dominant(more than two females to one male)',
     'balanced': 'balanced',
     'only male': 'only male',
     'only female': 'only female'
